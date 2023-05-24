@@ -1,7 +1,8 @@
  <template>
   <view class="tab-bar">
     <view v-for="(item,index) in state.list" :key="index" class="tab-bar-item" @click="switchTab(item, index)">
-      <image class="tab_img" :src="selected === index ? item.selectedIconPath : item.iconPath"></image>
+      <image class="tab_img" :class="selected !== index ? 'block' : 'none'" :src="item.iconPath"></image>
+      <image class="tab_img" :class="selected === index ? 'modal' : 'none'" :src="item.selectedIconPath"></image>
       <view class="tab_text" :style="{color: selected === index ? state.selectedColor : state.color}">{{item.text}}</view>
     </view>
   </view>
@@ -75,6 +76,33 @@ const switchTab = (item:any,index:number)=>{
       .tab_img {
         width: 48rpx;
         height: 48rpx;
+        // transition: transform 0.3s ease;
+      }
+
+      .modal{
+        animation:zoom .5s ease-out 0s;
+        //  transform: scale(1.5);
+        display: block;
+      }
+
+      .block{
+        display: block;
+      }
+
+      .none{
+        display: none;
+      }
+      
+      @keyframes zoom {
+        from {
+          transform:scale(0)
+        }
+        
+        50% {
+          transform:scale(1.2)
+        }
+  
+        to {transform: scale(1)}
       }
 
       .tab_text {
