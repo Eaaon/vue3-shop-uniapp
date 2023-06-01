@@ -15,7 +15,11 @@
 				"navigationBarTitleText": "首页",
 				"enablePullDownRefresh": true,
 				"backgroundColor": "#2979ff",
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"app-plus": {
+					//App、H5禁用原生导航栏
+					"titleNView": false 
+				}
 			},
 			"meta": {
 				"auth": false,
@@ -73,10 +77,10 @@
 		  },
 		  {
 			"pagePath": "pages/index/cart"
-		  }
+		  },
 		  {
 			"pagePath": "pages/index/user"
 		  }
 		]
-	  }
+	}
 }
