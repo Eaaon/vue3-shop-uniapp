@@ -1,6 +1,6 @@
 <template>
   <view class="content"  :style="{backgroundImage:`url(${indexBackgroundImage})`}">
-    <view style="z-index: 2;" :style="{height:state.statusBarHeight+'px'}"></view>
+    <!-- <view style="z-index: 2;" :style="{height:state.statusBarHeight+'px'}"></view> -->
     <view class="flex header" :style="{top:state.statusBarHeight+'px',height:state.navBarHeight+'px', 'line-height':state.navBarHeight+'px', 'width': state.navbarLeftWidth+'px'}" v-if="state.navBarHeight">
       <view>
         <image
@@ -13,24 +13,19 @@
     </view>
     <view v-else>222</view>
 
-    <uni-search-bar type="text" placeholder="请输入文本" v-model="state.searchValue"></uni-search-bar>
+    <input type="text" placeholder="请输入文本" />
     
-    <view class="uni-margin-wrap">
-      <uni-swiper-dot class="uni-swiper-dot-box" @clickItem=clickItem :current="state.current" :mode="state.mode"
-			:dots-styles="state.dotsStyles" field="content">
-        <swiper class="swiper-box" :current="state.swiperDotIndex">
-          <swiper-item>
-            <image class="swiper-item" src="../static/banner_001.png"></image>
-          </swiper-item>
-          <swiper-item>
-            <image class="swiper-item" src="../static/banner_002.png"></image>
-          </swiper-item>
-          <swiper-item>
-            <image class="swiper-item" src="../static/banner_002.png"></image>
-          </swiper-item>
-        </swiper>
-      </uni-swiper-dot>
-		</view>
+    <!-- <view class="uni-margin-wrap">
+			<swiper class="swiper" circular :indicator-dots="state.indicatorDots" :autoplay="state.autoplay" :interval="state.interval"
+				:duration="state.duration">
+				<swiper-item>
+					<image class="swiper-item" src="../static/banner_001.png"></image>
+				</swiper-item>
+				<swiper-item>
+					<image class="swiper-item" src="../static/banner_002.png"></image>
+				</swiper-item>
+			</swiper>
+		</view> -->
 		
     <s-tabbar :selected="0"></s-tabbar>
   </view>
@@ -51,18 +46,7 @@ const state = reactive({
   vertical: false,
   autoplay: false,
   interval: 2000,
-  duration: 500,
-  searchValue: "",
-  current: 0,
-  mode:"round",
-  dotsStyles: {
-    backgroundColor: 'rgba(83, 200, 249,0.3)',
-    border: '1px rgba(83, 200, 249,0.3) solid',
-    color: '#fff',
-    selectedBackgroundColor: 'rgba(83, 200, 249,0.9)',
-    selectedBorder: '1px rgba(83, 200, 249,0.9) solid'
-  },
-  swiperDotIndex: 0
+  duration: 500
 })
 
 // 获取手机系统信息
@@ -80,10 +64,6 @@ if (info.uniPlatform === 'mp-weixin') {
 } else {
   // 不在微信小程序环境下运行
   console.log('当前非微信小程序环境');
-}
-
-const clickItem = ()=>{
-
 }
 
 </script>
@@ -133,7 +113,7 @@ const clickItem = ()=>{
   width: 690rpx;
   width: 100%;
 }
-.swiper-box {
+.swiper {
   height: 420rpx;
 }
 .swiper-item {

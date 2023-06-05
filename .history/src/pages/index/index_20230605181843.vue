@@ -17,8 +17,9 @@
     
     <view class="uni-margin-wrap">
       <uni-swiper-dot class="uni-swiper-dot-box" @clickItem=clickItem :current="state.current" :mode="state.mode"
-			:dots-styles="state.dotsStyles" field="content">
-        <swiper class="swiper-box" :current="state.swiperDotIndex">
+			:dots-styles="dotsStyles" field="content">
+        <swiper class="swiper" circular :indicator-dots="state.indicatorDots" :autoplay="state.autoplay" :interval="state.interval" 
+          :duration="state.duration">
           <swiper-item>
             <image class="swiper-item" src="../static/banner_001.png"></image>
           </swiper-item>
@@ -54,15 +55,7 @@ const state = reactive({
   duration: 500,
   searchValue: "",
   current: 0,
-  mode:"round",
-  dotsStyles: {
-    backgroundColor: 'rgba(83, 200, 249,0.3)',
-    border: '1px rgba(83, 200, 249,0.3) solid',
-    color: '#fff',
-    selectedBackgroundColor: 'rgba(83, 200, 249,0.9)',
-    selectedBorder: '1px rgba(83, 200, 249,0.9) solid'
-  },
-  swiperDotIndex: 0
+  mode:"round"
 })
 
 // 获取手机系统信息
@@ -80,10 +73,6 @@ if (info.uniPlatform === 'mp-weixin') {
 } else {
   // 不在微信小程序环境下运行
   console.log('当前非微信小程序环境');
-}
-
-const clickItem = ()=>{
-
 }
 
 </script>
@@ -133,7 +122,7 @@ const clickItem = ()=>{
   width: 690rpx;
   width: 100%;
 }
-.swiper-box {
+.swiper {
   height: 420rpx;
 }
 .swiper-item {

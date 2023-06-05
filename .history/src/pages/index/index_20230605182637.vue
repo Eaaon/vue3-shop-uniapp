@@ -17,7 +17,7 @@
     
     <view class="uni-margin-wrap">
       <uni-swiper-dot class="uni-swiper-dot-box" @clickItem=clickItem :current="state.current" :mode="state.mode"
-			:dots-styles="state.dotsStyles" field="content">
+			:dots-styles="state.dotsStyles" field="content" field="content">
         <swiper class="swiper-box" :current="state.swiperDotIndex">
           <swiper-item>
             <image class="swiper-item" src="../static/banner_001.png"></image>

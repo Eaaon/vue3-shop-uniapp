@@ -1,6 +1,6 @@
 <template>
-  <view class="content"  :style="{backgroundImage:`url(${indexBackgroundImage})`}">
-    <view style="z-index: 2;" :style="{height:state.statusBarHeight+'px'}"></view>
+  <view class="content">
+    <!-- <view style="z-index: 2;" :style="{height:state.statusBarHeight+'px'}"></view> -->
     <view class="flex header" :style="{top:state.statusBarHeight+'px',height:state.navBarHeight+'px', 'line-height':state.navBarHeight+'px', 'width': state.navbarLeftWidth+'px'}" v-if="state.navBarHeight">
       <view>
         <image
@@ -12,24 +12,20 @@
       <view class="address">广东省深圳市福田区群星广场A座1801</view>
     </view>
     <view v-else>222</view>
-
-    <uni-search-bar type="text" placeholder="请输入文本" v-model="state.searchValue"></uni-search-bar>
     
     <view class="uni-margin-wrap">
-      <uni-swiper-dot class="uni-swiper-dot-box" @clickItem=clickItem :current="state.current" :mode="state.mode"
-			:dots-styles="state.dotsStyles" field="content">
-        <swiper class="swiper-box" :current="state.swiperDotIndex">
-          <swiper-item>
-            <image class="swiper-item" src="../static/banner_001.png"></image>
-          </swiper-item>
-          <swiper-item>
-            <image class="swiper-item" src="../static/banner_002.png"></image>
-          </swiper-item>
-          <swiper-item>
-            <image class="swiper-item" src="../static/banner_002.png"></image>
-          </swiper-item>
-        </swiper>
-      </uni-swiper-dot>
+			<swiper class="swiper" circular :indicator-dots="state.indicatorDots" :autoplay="state.autoplay" :interval="state.interval"
+				:duration="state.duration">
+				<swiper-item>
+					<image class="swiper-item uni-bg-red" src="../static/banner_001.jpg"></image>
+				</swiper-item>
+				<swiper-item>
+					<image class="swiper-item uni-bg-green" src="../static/banner_002.jpg"></image>
+				</swiper-item>
+				<swiper-item>
+					<image class="swiper-item uni-bg-blue" src="../static/banner_003.jpg"></image>
+				</swiper-item>
+			</swiper>
 		</view>
 		
     <s-tabbar :selected="0"></s-tabbar>
@@ -38,7 +34,7 @@
 
 <script setup lang="ts">
 import { compile, ref, reactive, toRefs } from 'vue'
-import indexBackgroundImage from "@/static/bg.png"
+
 
 const title = ref('Hello')
 
@@ -51,18 +47,7 @@ const state = reactive({
   vertical: false,
   autoplay: false,
   interval: 2000,
-  duration: 500,
-  searchValue: "",
-  current: 0,
-  mode:"round",
-  dotsStyles: {
-    backgroundColor: 'rgba(83, 200, 249,0.3)',
-    border: '1px rgba(83, 200, 249,0.3) solid',
-    color: '#fff',
-    selectedBackgroundColor: 'rgba(83, 200, 249,0.9)',
-    selectedBorder: '1px rgba(83, 200, 249,0.9) solid'
-  },
-  swiperDotIndex: 0
+  duration: 500
 })
 
 // 获取手机系统信息
@@ -82,10 +67,6 @@ if (info.uniPlatform === 'mp-weixin') {
   console.log('当前非微信小程序环境');
 }
 
-const clickItem = ()=>{
-
-}
-
 </script>
 
 <style>
@@ -93,8 +74,6 @@ const clickItem = ()=>{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-size: 100% 100%;
-  background-position : no-repeat;
 }
 
 .flex{
@@ -106,7 +85,7 @@ const clickItem = ()=>{
   color: #fff;
   text-align: left;
   padding-left: 20rpx;
-  /* position: fixed; */
+  position: fixed;
   z-index: 2;
 }
 
@@ -124,22 +103,53 @@ const clickItem = ()=>{
   padding-left: 4rpx;
 }
 
+.logo {
+  height: 200rpx;
+  width: 200rpx;
+  margin-top: 200rpx;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50rpx;
+}
+
+.text-area {
+  display: flex;
+  justify-content: center;
+}
+
 .title {
   font-size: 36rpx;
   color: #8f8f94;
 }
 
 .uni-margin-wrap {
-  width: 690rpx;
-  width: 100%;
-}
-.swiper-box {
-  height: 420rpx;
-}
-.swiper-item {
-  display: block;
-  height: 420rpx;
-  width: 750rpx;
-  text-align: center;
-}
+		width: 690rpx;
+		width: 100%;
+	}
+	.swiper {
+		height: 300rpx;
+	}
+	.swiper-item {
+		display: block;
+		height: 300rpx;
+    width: 750rpx;
+		line-height: 300rpx;
+		text-align: center;
+	}
+	.swiper-list {
+		margin-top: 40rpx;
+		margin-bottom: 0;
+	}
+	.uni-common-mt {
+		margin-top: 60rpx;
+		position: relative;
+	}
+	.info {
+		position: absolute;
+		right: 20rpx;
+	}
+	.uni-padding-wrap {
+		width: 550rpx;
+		padding: 0 100rpx;
+	}
 </style>

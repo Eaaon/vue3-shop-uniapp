@@ -13,7 +13,7 @@
 			"aliasPath": "/",
 			"style": {
 				"navigationBarTitleText": "首页",
-				// "enablePullDownRefresh": true,
+				"enablePullDownRefresh": true,
 				"navigationStyle": "custom",
 				"app-plus": {
 					//App、H5禁用原生导航栏
@@ -64,7 +64,7 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#2979ff"
+		"backgroundColor": "#fff"
 	},
 	"tabBar": {
 		"list": [

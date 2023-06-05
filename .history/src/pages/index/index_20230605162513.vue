@@ -1,6 +1,6 @@
 <template>
-  <view class="content"  :style="{backgroundImage:`url(${indexBackgroundImage})`}">
-    <view style="z-index: 2;" :style="{height:state.statusBarHeight+'px'}"></view>
+  <view class="content"  :style="{backgroundImage:`url(${indexBackgroundImage})`,backgroundRepeat:'no-repeat', backgroundSize: '100% 65%'}">
+    <!-- <view style="z-index: 2;" :style="{height:state.statusBarHeight+'px'}"></view> -->
     <view class="flex header" :style="{top:state.statusBarHeight+'px',height:state.navBarHeight+'px', 'line-height':state.navBarHeight+'px', 'width': state.navbarLeftWidth+'px'}" v-if="state.navBarHeight">
       <view>
         <image
@@ -12,25 +12,18 @@
       <view class="address">广东省深圳市福田区群星广场A座1801</view>
     </view>
     <view v-else>222</view>
-
-    <uni-search-bar type="text" placeholder="请输入文本" v-model="state.searchValue"></uni-search-bar>
     
-    <view class="uni-margin-wrap">
-      <uni-swiper-dot class="uni-swiper-dot-box" @clickItem=clickItem :current="state.current" :mode="state.mode"
-			:dots-styles="state.dotsStyles" field="content">
-        <swiper class="swiper-box" :current="state.swiperDotIndex">
-          <swiper-item>
-            <image class="swiper-item" src="../static/banner_001.png"></image>
-          </swiper-item>
-          <swiper-item>
-            <image class="swiper-item" src="../static/banner_002.png"></image>
-          </swiper-item>
-          <swiper-item>
-            <image class="swiper-item" src="../static/banner_002.png"></image>
-          </swiper-item>
-        </swiper>
-      </uni-swiper-dot>
-		</view>
+    <!-- <view class="uni-margin-wrap">
+			<swiper class="swiper" circular :indicator-dots="state.indicatorDots" :autoplay="state.autoplay" :interval="state.interval"
+				:duration="state.duration">
+				<swiper-item>
+					<image class="swiper-item" src="../static/banner_001.png"></image>
+				</swiper-item>
+				<swiper-item>
+					<image class="swiper-item" src="../static/banner_002.png"></image>
+				</swiper-item>
+			</swiper>
+		</view> -->
 		
     <s-tabbar :selected="0"></s-tabbar>
   </view>
@@ -38,7 +31,7 @@
 
 <script setup lang="ts">
 import { compile, ref, reactive, toRefs } from 'vue'
-import indexBackgroundImage from "@/static/bg.png"
+import indexBackgroundImage from "@/static/banner_002.png"
 
 const title = ref('Hello')
 
@@ -51,18 +44,7 @@ const state = reactive({
   vertical: false,
   autoplay: false,
   interval: 2000,
-  duration: 500,
-  searchValue: "",
-  current: 0,
-  mode:"round",
-  dotsStyles: {
-    backgroundColor: 'rgba(83, 200, 249,0.3)',
-    border: '1px rgba(83, 200, 249,0.3) solid',
-    color: '#fff',
-    selectedBackgroundColor: 'rgba(83, 200, 249,0.9)',
-    selectedBorder: '1px rgba(83, 200, 249,0.9) solid'
-  },
-  swiperDotIndex: 0
+  duration: 500
 })
 
 // 获取手机系统信息
@@ -82,10 +64,6 @@ if (info.uniPlatform === 'mp-weixin') {
   console.log('当前非微信小程序环境');
 }
 
-const clickItem = ()=>{
-
-}
-
 </script>
 
 <style>
@@ -93,8 +71,9 @@ const clickItem = ()=>{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-size: 100% 100%;
-  background-position : no-repeat;
+  background-image: url('https://m15.360buyimg.com/mobilecms/jfs/t1/117817/29/35620/129521/6458e11cFaf8d9483/f9c9ef15220878a9.jpg!cr_1053x420_4_0!q70.jpg');
+  background-size: cover;
+  height: 420rpx;
 }
 
 .flex{
@@ -106,7 +85,7 @@ const clickItem = ()=>{
   color: #fff;
   text-align: left;
   padding-left: 20rpx;
-  /* position: fixed; */
+  position: fixed;
   z-index: 2;
 }
 
@@ -133,7 +112,7 @@ const clickItem = ()=>{
   width: 690rpx;
   width: 100%;
 }
-.swiper-box {
+.swiper {
   height: 420rpx;
 }
 .swiper-item {

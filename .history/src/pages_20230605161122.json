@@ -13,7 +13,7 @@
 			"aliasPath": "/",
 			"style": {
 				"navigationBarTitleText": "首页",
-				// "enablePullDownRefresh": true,
+				"enablePullDownRefresh": true,
 				"navigationStyle": "custom",
 				"app-plus": {
 					//App、H5禁用原生导航栏
