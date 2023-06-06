@@ -18,30 +18,13 @@
       :dots-styles="state.dotsStyles" field="content">
       <swiper class="mt-3 h-300" @change="change" :current="state.swiperDotIndex" circular autoplay>
         <swiper-item v-for="(item, index) in state.swiperList" :key="index" @click=clickItem(item)>
-          <view class="ml-3 mr-3">
-            <image class="w-full h-300 text-center rounded" :src="item.url"></image>
+          <view style="margin:0 20rpx;">
+            <image class="swiper-item" :src="item.url"></image>
           </view>
         </swiper-item>
       </swiper>
     </uni-swiper-dot>
-
-    <s-box></s-box>
-
-    <uni-card>
-      <template v-slot:title>
-        <view class="flex pt-4 pl-2">
-          <view>限时秒杀：</view>
-          <uni-countdown :day="1" :hour="2" :minute="30" :second="0" color="#FFFFFF" background-color="#007AFF" />
-        </view>
-      </template>
-      <view class="seckill-list flex flex-wrap">
-        <view class="seckill-item flex-1" v-for="(item, index) in state.seckillList" :key="index">
-          <image mode="widthFix" :src="item.url"></image>
-          <view>{{item.price}}</view>
-        </view>
-      </view>
-    </uni-card>
-
+		
     <s-tabbar :selected="0"></s-tabbar>
   </view>
 </template>
@@ -113,19 +96,6 @@ const state = reactive({
   },{
     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/54043/33/19389/4660/62b049dbE3b9aef75/2fcd31afd5d702e4.png',
     content: '新百货'
-  }],
-  seckillList:[{
-     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/187640/12/30456/5256/639c2315Ebc95c142/350a8f0c766f5460.png',
-     price: '33.33'
-  },{
-     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
-     price: '33.33'
-  },{
-     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
-     price: '33.33'
-  },{
-     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
-     price: '33.33'
   }]
 })
 
@@ -162,12 +132,16 @@ const change = (e:any) =>{
 </script>
 
 <style>
-.seckill-item{
-  width: 25%;
-  text-align: center;
+
+.swiper-box {
+  margin-top: 20rpx;
+  height: 300rpx;
 }
-.seckill-item image{
-  width: 60%;
-  margin: 0 auto;
+.swiper-item {
+  display: block;
+  width: 100%;
+  height: 300rpx;
+  text-align: center;
+  border-radius: 12rpx;
 }
 </style>

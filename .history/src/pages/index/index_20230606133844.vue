@@ -1,47 +1,35 @@
 <template>
-  <view class="flex flex-col justify-center">
-    <view class="bg-cover bg-no-repeat" :style="{backgroundImage:`url(${indexBackgroundImage})`}">
+  <view class="content">
+    <view class="m-header" :style="{backgroundImage:`url(${indexBackgroundImage})`}">
       <view :style="{height:state.statusBarHeight+'px'}"></view>
-      <view class="flex items-center text-white ml-3" :style="{height:state.navBarHeight+'px', 'width': state.navbarLeftWidth+'px'}">
+      <view class="flex header-address" :style="{height:state.navBarHeight+'px', 'width': state.navbarLeftWidth+'px'}">
         <view>
           <image
             src="../../static/svg/location.svg"
-            class="thumb-40"
+            class="address-img"
+            style="color:#f00"
           ></image>
         </view>
-        <view class="flex-1 pl-sm text-ellipsis">广东省深圳市福田区群星广场A座1801</view>
+        <view class="address-text">广东省深圳市福田区群星广场A座1801</view>
       </view>
       <uni-search-bar type="text" placeholder="请输入文本" v-model="state.searchValue"></uni-search-bar>
     </view>
 
-    <uni-swiper-dot :info="state.swiperList" :current="state.current" :mode="state.mode" 
+    <uni-swiper-dot class="uni-swiper-dot-box"  :info="state.swiperList" :current="state.current" :mode="state.mode" 
       :dots-styles="state.dotsStyles" field="content">
-      <swiper class="mt-3 h-300" @change="change" :current="state.swiperDotIndex" circular autoplay>
+      <swiper class="swiper-box" @change="change" :current="state.swiperDotIndex" circular autoplay>
         <swiper-item v-for="(item, index) in state.swiperList" :key="index" @click=clickItem(item)>
-          <view class="ml-3 mr-3">
-            <image class="w-full h-300 text-center rounded" :src="item.url"></image>
+          <view style="margin:0 20rpx;">
+            <image class="swiper-item" :src="item.url"></image>
           </view>
         </swiper-item>
       </swiper>
     </uni-swiper-dot>
 
-    <s-box></s-box>
+    <view class="box-wrap">
 
-    <uni-card>
-      <template v-slot:title>
-        <view class="flex pt-4 pl-2">
-          <view>限时秒杀：</view>
-          <uni-countdown :day="1" :hour="2" :minute="30" :second="0" color="#FFFFFF" background-color="#007AFF" />
-        </view>
-      </template>
-      <view class="seckill-list flex flex-wrap">
-        <view class="seckill-item flex-1" v-for="(item, index) in state.seckillList" :key="index">
-          <image mode="widthFix" :src="item.url"></image>
-          <view>{{item.price}}</view>
-        </view>
-      </view>
-    </uni-card>
-
+    </view>
+		
     <s-tabbar :selected="0"></s-tabbar>
   </view>
 </template>
@@ -113,19 +101,6 @@ const state = reactive({
   },{
     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/54043/33/19389/4660/62b049dbE3b9aef75/2fcd31afd5d702e4.png',
     content: '新百货'
-  }],
-  seckillList:[{
-     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/187640/12/30456/5256/639c2315Ebc95c142/350a8f0c766f5460.png',
-     price: '33.33'
-  },{
-     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
-     price: '33.33'
-  },{
-     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
-     price: '33.33'
-  },{
-     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
-     price: '33.33'
   }]
 })
 
@@ -162,12 +137,56 @@ const change = (e:any) =>{
 </script>
 
 <style>
-.seckill-item{
-  width: 25%;
-  text-align: center;
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.seckill-item image{
-  width: 60%;
-  margin: 0 auto;
+
+.m-header{
+  background-size: 100% 100%;
+  background-position : no-repeat;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+}
+
+.header-address{
+  color: #fff;
+  text-align: left;
+  padding-left: 20rpx;
+}
+
+.address-img{
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+}
+
+.address-text{
+  text-overflow :ellipsis; /*让截断的文字显示为点点。还有一个值是clip意截断不显示点点*/
+  white-space :nowrap; /*让文字不换行*/
+  overflow : hidden; /*超出要隐藏*/
+  flex: 1;
+  padding-left: 4rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  color: #8f8f94;
+}
+
+.swiper-box {
+  margin-top: 20rpx;
+  height: 300rpx;
+}
+.swiper-item {
+  display: block;
+  width: 100%;
+  height: 300rpx;
+  text-align: center;
+  border-radius: 12rpx;
 }
 </style>

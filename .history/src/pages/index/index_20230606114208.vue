@@ -1,0 +1,171 @@
+<template>
+  <view class="content">
+    <view class="m-header" :style="{backgroundImage:`url(${indexBackgroundImage})`}">
+      <view :style="{height:state.statusBarHeight+'px'}"></view>
+      <view class="flex header-address" :style="{height:state.navBarHeight+'px', 'width': state.navbarLeftWidth+'px'}" v-if="state.navBarHeight">
+        <view>
+          <image
+            src="../../static/svg/location.svg"
+            class="address-img"
+            style="color:#f00"
+          ></image>
+        </view>
+        <view class="address-text">广东省深圳市福田区群星广场A座1801</view>
+      </view>
+      <view class="flex header-address" style="height:60rpx" v-else>
+        <view>
+          <image
+            src="../../static/svg/location.svg"
+            class="location-img"
+            style="color:#f00"
+          ></image>
+        </view>
+        <view class="address">广东省深圳市福田区群星广场A座1801</view>
+      </view>
+      <uni-search-bar type="text" placeholder="请输入文本" v-model="state.searchValue"></uni-search-bar>
+    </view>
+
+    <uni-swiper-dot class="uni-swiper-dot-box"  :info="state.swiperList" :current="state.current" :mode="state.mode" 
+      :dots-styles="state.dotsStyles" field="content">
+      <swiper class="swiper-box" @change="change" :current="state.swiperDotIndex" circular autoplay>
+        <swiper-item v-for="(item, index) in state.swiperList" :key="index" @click=clickItem(item)>
+          <view style="margin:0 20rpx;">
+            <image class="swiper-item" :src="item.url"></image>
+          </view>
+        </swiper-item>
+      </swiper>
+    </uni-swiper-dot>
+		
+    <s-tabbar :selected="0"></s-tabbar>
+  </view>
+</template>
+
+<script setup lang="ts">
+import { compile, ref, reactive, toRefs } from 'vue'
+import indexBackgroundImage from "@/static/bg.png"
+
+const title = ref('Hello')
+
+const state = reactive({
+  statusBarHeight: 0,
+  navBarHeight: 0,
+  navbarLeftWidth: 0,
+  indicatorDots: true,
+  autoplay: false,
+  interval: 2000,
+  duration: 500,
+  searchValue: "",
+  current: 0,
+  mode:"round",
+  dotsStyles: {
+    backgroundColor: 'rgba(83, 200, 249,0.3)',
+    border: '1px rgba(83, 200, 249,0.3) solid',
+    color: '#fff',
+    selectedBackgroundColor: 'rgba(83, 200, 249,0.9)',
+    selectedBorder: '1px rgba(83, 200, 249,0.9) solid'
+  },
+  swiperDotIndex: 0,
+  swiperList:[{
+      colorClass: 'uni-bg-red',
+      url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/203328/7/34468/36963/646b2882Ff6080121/4276e9336352e93d.jpg!cr_1053x420_4_0!q70.jpg',
+      content: '内容 A'
+    },
+    {
+      colorClass: 'uni-bg-green',
+      url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/110526/4/34091/95155/644d07f4F2aa9abf7/f9d26fdc98041d9d.jpg!cr_1053x420_4_0!q70.jpg',
+      content: '内容 B'
+    },
+    {
+      colorClass: 'uni-bg-blue',
+      url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/110186/37/35544/127997/6465c302F2af1852c/21a7e18348df1ede.jpg!cr_1053x420_4_0!q70.jpg',
+      content: '内容 C'
+    }
+  ],
+})
+
+// 获取手机系统信息
+const info = uni.getSystemInfoSync()
+// 设置状态栏高度（H5顶部无状态栏小程序有状态栏需要撑起高度）
+state.statusBarHeight = info.statusBarHeight || 0
+if (info.uniPlatform === 'mp-weixin') {
+  // 除了h5 app mp-alipay的情况下执行
+  // #ifndef H5 || APP-PLUS || MP-ALIPAY
+  // 获取胶囊的位置
+  const menuButtonInfo = uni.getMenuButtonBoundingClientRect() || ''
+  state.navbarLeftWidth =  info.windowWidth - menuButtonInfo.width - 40
+  // (胶囊底部高度 - 状态栏的高度) + (胶囊顶部高度 - 状态栏内的高度) = 导航栏的高度
+  state.navBarHeight = (menuButtonInfo.bottom - state.statusBarHeight) + (menuButtonInfo.top - state.statusBarHeight)
+} else {
+  // 不在微信小程序环境下运行
+  state.navbarLeftWidth = info.windowWidth - 40
+  state.navBarHeight = 30
+  console.log('当前非微信小程序环境');
+}
+
+const clickItem = (item:any)=>{
+  uni.showToast({
+    title: item.content,
+    duration: 2000
+  });
+}
+
+const change = (e:any) =>{
+  state.current = e.detail.current
+}
+
+</script>
+
+<style>
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.m-header{
+  background-size: 100% 100%;
+  background-position : no-repeat;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+}
+
+.header-address{
+  color: #fff;
+  text-align: left;
+  padding-left: 20rpx;
+}
+
+.address-img{
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+}
+
+.address-text{
+  text-overflow :ellipsis; /*让截断的文字显示为点点。还有一个值是clip意截断不显示点点*/
+  white-space :nowrap; /*让文字不换行*/
+  overflow : hidden; /*超出要隐藏*/
+  flex: 1;
+  padding-left: 4rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  color: #8f8f94;
+}
+
+.swiper-box {
+  margin-top: 20rpx;
+  height: 300rpx;
+}
+.swiper-item {
+  display: block;
+  width: 100%;
+  height: 300rpx;
+  text-align: center;
+  border-radius: 12rpx;
+}
+</style>

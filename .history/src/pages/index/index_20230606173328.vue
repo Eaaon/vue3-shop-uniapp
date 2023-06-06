@@ -29,13 +29,13 @@
 
     <uni-card>
       <template v-slot:title>
-        <view class="flex pt-4 pl-2">
+        <view class="flex pt-2">
           <view>限时秒杀：</view>
           <uni-countdown :day="1" :hour="2" :minute="30" :second="0" color="#FFFFFF" background-color="#007AFF" />
         </view>
       </template>
-      <view class="seckill-list flex flex-wrap">
-        <view class="seckill-item flex-1" v-for="(item, index) in state.seckillList" :key="index">
+      <view class="seckill-list">
+        <view class="seckill-item" v-for="(item, index) in state.seckillList" :key="index">
           <image mode="widthFix" :src="item.url"></image>
           <view>{{item.price}}</view>
         </view>
@@ -124,7 +124,7 @@ const state = reactive({
      url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
      price: '33.33'
   },{
-     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
+     url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/203328/7/34468/36963/646b2882Ff6080121/4276e9336352e93d.jpg!cr_1053x420_4_0!q70.jpg',
      price: '33.33'
   }]
 })
@@ -162,12 +162,7 @@ const change = (e:any) =>{
 </script>
 
 <style>
-.seckill-item{
-  width: 25%;
-  text-align: center;
-}
 .seckill-item image{
-  width: 60%;
-  margin: 0 auto;
+  width: 25%;
 }
 </style>
