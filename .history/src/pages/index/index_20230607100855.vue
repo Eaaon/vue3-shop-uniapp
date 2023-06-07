@@ -13,10 +13,8 @@
       </view>
       <uni-search-bar type="text" placeholder="请输入文本" v-model="state.searchValue"></uni-search-bar>
     </view>
-    <s-swiper></s-swiper>
     <s-box></s-box>
     <s-seckill></s-seckill>
-    <s-noticebar></s-noticebar>
 
     <s-tabbar :selected="0"></s-tabbar>
   </view>
@@ -26,11 +24,54 @@
 import { compile, ref, reactive, toRefs } from 'vue'
 import indexBackgroundImage from "@/static/bg.png"
 
+const title = ref('Hello')
+
 const state = reactive({
   statusBarHeight: 0,
   navBarHeight: 0,
   navbarLeftWidth: 0,
   searchValue: "",
+  mode:"round",
+  dotsStyles: {
+    backgroundColor: 'rgba(83, 200, 249,0.3)',
+    border: '1px rgba(83, 200, 249,0.3) solid',
+    color: '#fff',
+    selectedBackgroundColor: 'rgba(83, 200, 249,0.9)',
+    selectedBorder: '1px rgba(83, 200, 249,0.9) solid'
+  },
+
+  boxList:[{
+    url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/187640/12/30456/5256/639c2315Ebc95c142/350a8f0c766f5460.png',
+    content: '超市'
+  },{
+    url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
+    content: '数码电器'
+  },{
+    url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/54043/33/19389/4660/62b049dbE3b9aef75/2fcd31afd5d702e4.png',
+    content: '新百货'
+  },{
+    url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/187640/12/30456/5256/639c2315Ebc95c142/350a8f0c766f5460.png',
+    content: '超市'
+  },{
+    url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
+    content: '数码电器'
+  },{
+    url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/54043/33/19389/4660/62b049dbE3b9aef75/2fcd31afd5d702e4.png',
+    content: '新百货'
+  },{
+    url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/187640/12/30456/5256/639c2315Ebc95c142/350a8f0c766f5460.png',
+    content: '超市'
+  },{
+    url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
+    content: '数码电器'
+  },{
+    url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/54043/33/19389/4660/62b049dbE3b9aef75/2fcd31afd5d702e4.png',
+    content: '新百货'
+  },{
+    url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/54043/33/19389/4660/62b049dbE3b9aef75/2fcd31afd5d702e4.png',
+    content: '新百货'
+  }],
+
 })
 
 // 获取手机系统信息
@@ -52,5 +93,24 @@ if (info.uniPlatform === 'mp-weixin') {
   console.log('当前非微信小程序环境');
 }
 
+const clickItem = (item:any)=>{
+  uni.showToast({
+    title: item.content,
+    duration: 2000
+  });
+}
+
+
+
 </script>
 
+<style>
+.seckill-item{
+  width: 25%;
+  text-align: center;
+}
+.seckill-item image{
+  width: 60%;
+  margin: 0 auto;
+}
+</style>

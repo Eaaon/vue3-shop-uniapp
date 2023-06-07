@@ -16,8 +16,6 @@
     <s-swiper></s-swiper>
     <s-box></s-box>
     <s-seckill></s-seckill>
-    <s-noticebar></s-noticebar>
-
     <s-tabbar :selected="0"></s-tabbar>
   </view>
 </template>

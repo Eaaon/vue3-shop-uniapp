@@ -1,8 +1,8 @@
  <template>
   <view class="nav-box">
-    <view :style="{height:state.statusBarHeight+'px'}"></view>
-    <view class="navbar cor333 f34" :style="{height:state.navBarHeight+'px'}">
-      <view class="back" v-if="state.withBack" @tap="back">
+    <view :style="{height:statusBarHeight+'px'}"></view>
+    <view class="navbar cor333 f34" :style="{height:navBarHeight+'px'}">
+      <view class="back" v-if="withBack" @tap="back">
         <!-- <image src="/static/images/back-icon.png"  class="back-icon"></image> -->
       </view>
       <view v-else></view>
@@ -10,7 +10,7 @@
       <slot name="right"></slot>
     </view>
   </view>
-  <view :style="{height: state.statusBarHeight+'px'}" ></view>
+  <view :style="{height: statusBarHeight+'px'}" ></view>
 </template>
 
 <script setup lang="ts">

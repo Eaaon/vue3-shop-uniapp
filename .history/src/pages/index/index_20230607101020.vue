@@ -13,11 +13,10 @@
       </view>
       <uni-search-bar type="text" placeholder="请输入文本" v-model="state.searchValue"></uni-search-bar>
     </view>
+
     <s-swiper></s-swiper>
     <s-box></s-box>
     <s-seckill></s-seckill>
-    <s-noticebar></s-noticebar>
-
     <s-tabbar :selected="0"></s-tabbar>
   </view>
 </template>

@@ -10,7 +10,7 @@
       <slot name="right"></slot>
     </view>
   </view>
-  <view :style="{height: state.statusBarHeight+'px'}" ></view>
+  <view :style="{height: statusBarHeight+'px'}" ></view>
 </template>
 
 <script setup lang="ts">
