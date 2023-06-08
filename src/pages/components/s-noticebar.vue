@@ -6,7 +6,7 @@
         <!-- <navigator :url="'/pages/test/test?id=' + item?.productID"> -->
           <view class="seckill-item">
             <image mode="widthFix" class="seckill-image" :src="item?.url"></image>
-            <view class="text-gray-999 text-xs">{{ item?.price }}</view>
+            <view class="text-gray-999 text-xs">￥{{ item?.price }}</view>
           </view>
         <!-- </navigator> -->
       </swiper-item>

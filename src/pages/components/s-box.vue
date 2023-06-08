@@ -1,5 +1,5 @@
 <template>
-  <view class="box-wrapper flex flex-wrap mt-3">
+  <view class="box-wrapper flex flex-wrap mt-3 rounded bg-white pb-3 ml-3 mr-3">
     <view class="box text-center" v-for="(item, index) in state.list" :key="index" @click=clickItem(item)>
       <view class="mt-2 box-img">
         <image mode="widthFix" :src="item.url"></image>

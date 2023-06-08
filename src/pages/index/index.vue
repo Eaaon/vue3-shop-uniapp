@@ -1,5 +1,5 @@
 <template>
-  <view class="flex flex-col justify-center">
+  <view class="flex flex-col justify-center bg-gray-eee">
     <view class="bg-cover bg-no-repeat" :style="{backgroundImage:`url(${indexBackgroundImage})`}">
       <view :style="{height:state.statusBarHeight+'px'}"></view>
       <view class="flex items-center text-white ml-3" :style="{height:state.navBarHeight+'px', 'width': state.navbarLeftWidth+'px'}">
@@ -17,6 +17,7 @@
     <s-box></s-box>
     <s-seckill></s-seckill>
     <s-noticebar></s-noticebar>
+    <s-waterfull></s-waterfull>
 
     <s-tabbar :selected="0"></s-tabbar>
   </view>

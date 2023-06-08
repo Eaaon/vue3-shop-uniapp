@@ -29,7 +29,7 @@ const state = reactive({
       originPrice: '66.99'
     }, {
       productID: "0111",
-      url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/178015/31/13828/6862/60ec0c04Ee2fd63ac/ccf74d805a059a44.png',
+      url: 'https://m15.360buyimg.com/mobilecms/jfs/t1/185282/10/13877/6658/60ec1404E0fc4061a/a7c213f76e37a8d6.png',
       price: '33.33',
       originPrice: '66.99'
     }, {
