@@ -2,11 +2,15 @@
 	<view class="padding-top-lg">
 	<view class="waterfalls-flow">
 		<view v-for="(item,index) in data.column" :key="index" class="waterfalls-flow-column" :style="{'width':w,'margin-left':index==0?0:m}" :id="`waterfalls_flow_column_${index+1}`">
-			<view class="block w-full rounded overflow-hidden bg-white mb-2" v-for="(item2,index2) in data[`column_${index+1}`]" :key="index2">
+			<view class="block w-full rounded-lg overflow-hidden bg-white mb-2 pb-2" v-for="(item2,index2) in data[`column_${index+1}`]" :key="index2">
 				<image :src="item2.image" mode="widthFix" @load="imgLoad(item2)" @error="imgError(item2)" class="imgsty"></image>
-				<view class="text-sm pt-2 indent-2 line-clamp-2">{{item2.title}}</view>
-        <view class="text-sm">￥ {{item2.price}}</view>
-        <view class="text-xs text-gray-999 line-through">￥ {{item2.originPrice}}</view>
+				<view class="text-sm line-clamp-2 px-2 my-2 ">{{item2.title}}</view>
+        <view class="inline-block text-xs text-red-ligth px-2">
+          <view class="inline-block">￥</view>
+          <view class="inline-block text-base font-medium">{{filters.getIntegerPart(item2.price)}}.</view>
+          <view class="inline-block">{{filters.extractDecimal(item2.price)}}</view>
+          <view class="inline-block ml-1 text-xs text-gray-999 line-through decoration-slate-500">￥{{item2.originPrice}}</view>
+        </view>
 			</view>
 		</view>
 	</view>
@@ -22,9 +26,12 @@
 		computed,
 		getCurrentInstance,
 		onMounted
-	} from 'vue';
+  } from 'vue'
+
+  import filters from '@/utils/numberUtils'
+
 	const _this = getCurrentInstance();
-	
+
   interface productType{
     image: string
     title: string
@@ -42,7 +49,7 @@
 	data.list = [{
 			image: 'https://img14.360buyimg.com/mobilecms/s360x360_jfs/t1/96374/5/39427/159025/647fe8dcF4f700e98/74cb422b3e1fbe72.jpg!q70.dpg.webp',
 			title: '李施德林Listerine漱口水多效全护含酒精清新口气500ml*3瓶减少细菌',
-			price: '9.91',
+			price: '9.90',
       originPrice: '88.88'
 		},
 		{
@@ -194,7 +201,7 @@
 
 <style scoped lang="scss">
 	.waterfalls-flow {
-    margin: 0 30rpx;
+    margin: 0 20rpx;
 		&-column {
 			float: left;
       padding: 0 0 200upx;

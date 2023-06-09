@@ -1,6 +1,6 @@
 <template>
   <view class="flex flex-col justify-center bg-gray-eee">
-    <view class="bg-cover bg-no-repeat" :style="{backgroundImage:`url(${indexBackgroundImage})`}">
+    <view class="bg-cover bg-no-repeat sticky z-10 top-0" :style="{backgroundImage:`url('https://www.bing.com/th?id=OHR.BalloonsTurkey_ZH-CN2791109350_1920x1080.webp&qlt=50')`}">
       <view :style="{height:state.statusBarHeight+'px'}"></view>
       <view class="flex items-center text-white ml-3" :style="{height:state.navBarHeight+'px', 'width': state.navbarLeftWidth+'px'}">
         <view>
@@ -26,6 +26,7 @@
 <script setup lang="ts">
 import { compile, ref, reactive, toRefs } from 'vue'
 import indexBackgroundImage from "@/static/bg.png"
+
 
 const state = reactive({
   statusBarHeight: 0,
