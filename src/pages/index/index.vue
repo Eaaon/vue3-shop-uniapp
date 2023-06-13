@@ -26,6 +26,7 @@
 import { compile, ref, reactive, toRefs } from 'vue'
 import indexBackgroundImage from "@/static/bg.png"
 import request from "@/utils/request"
+import { withCtx } from 'vue';
 
 
 const state = reactive({
@@ -51,7 +52,7 @@ if (info.uniPlatform === 'mp-weixin') {
   // 不在微信小程序环境下运行
   state.navbarLeftWidth = info.windowWidth - 40
   state.navBarHeight = 34
-  console.log('当前非微信小程序环境');
+  // console.log('当前非微信小程序环境');
 }
 
 const param = {
@@ -59,8 +60,11 @@ const param = {
   size: 10,
   keywords: ''
 }
-request.request('login/log/list', 'GET', param ).then((res: any) => {
+request('login/log/list', 'GET', param ).then((res: any) => {
   console.log(res)
+  uni.showToast({
+    title:'22'
+  })
 })
 
 

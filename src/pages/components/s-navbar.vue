@@ -46,6 +46,4 @@ const back = () =>{
   emit('backPage')
 }
 
-console.log(state)
-
 </script>
