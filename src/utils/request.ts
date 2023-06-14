@@ -1,32 +1,32 @@
-interface params {
-  url: string,
-  header: object,
-  method: string,
-  data: object
-}
+import env from '@/utils/env'
 
-const request = (url: string, method: "GET" | "POST", data: {}) => {
+const request = (options: any) => {
   return new Promise((resolve, reject) => {
     // const token = uni.getStorageSync('token')
-    const token = 'eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNosikEKwjAQRe8yMLtSkmKnk-6SNkJAu-sFlBELWoRkURDv7hTdfB7v_TcMpzSlIY3QgzXGWB0LFczzTykuOSsVyaXOz-UhRaTc6-u6vyZ_jhoxEoYWOWBk9Ed0LcYO3QE974kZQ6d32V7QW2Ii1xBxBevl9heNUfH5AgAA__8.YKx8lozy_aBkGyMxuZqrfmkY62chyDhJQ2lngfc3uME'
+    const token = ''
+    options.url = options.url || ''; // 请求路径
+    options.method = options.method || 'GET'; //请求方式
+    options.data = options.data || {}; //请求携带的数据
+    let header = { 'Authorization': token }
     uni.request({
-      url: 'https://dev.smileteeth.cn/vendingmall/' + url,
-      header: { 'Authorization': token },
-      method: method,
-      data: data,
+      url: `${env.baseUrl}${options.url}`,
+      header: header,
+      method: options.method,
+      data: options.data,
       success(res: any) {
-        // console.log(res)
+        console.log(res.statusCode)
+        resolve(res.data)
         // uni.hideLoading()
-        if (res.data.code === "000000") {
-          resolve(res.data);
-        } else {
-          //其他异常
-          // uni.showToast({
-          //   title: res.data.msg,
-          //   icon: 'none'
-          // })
-          reject(res.data);
-        }
+        // if (res.data.code === "000000") {
+        //   resolve(res.data);
+        // } else {
+        //   //其他异常
+        //   // uni.showToast({
+        //   //   title: res.data.msg,
+        //   //   icon: 'none'
+        //   // })
+        //   reject(res.data);
+        // }
       },
       fail(err) {
         uni.hideLoading()
@@ -58,10 +58,12 @@ uni.addInterceptor('request', {
     // 请求成功后，修改code值为1
     // args.data.code = 1
     // uni.hideLoading()
+    console.log("success", args)
   },
   fail(err) {
     // console.log('interceptor-fail', err)
     // console.log('请求失败')
+    console.log("fail", err)
     uni.hideLoading()
   },
   complete(res) {

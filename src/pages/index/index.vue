@@ -24,9 +24,8 @@
 
 <script setup lang="ts">
 import { compile, ref, reactive, toRefs } from 'vue'
-import indexBackgroundImage from "@/static/bg.png"
-import request from "@/utils/request"
-import { withCtx } from 'vue';
+// import indexBackgroundImage from "@/static/bg.png"
+import { login } from "@/api/user"
 
 
 const state = reactive({
@@ -56,17 +55,15 @@ if (info.uniPlatform === 'mp-weixin') {
 }
 
 const param = {
-  page: 1,
-  size: 10,
-  keywords: ''
+  phone: "11",
+  password: "10",
 }
-request('login/log/list', 'GET', param ).then((res: any) => {
-  console.log(res)
+
+login(param).then((res: any) => {
   uni.showToast({
-    title:'22'
+    title:'登录成功'
   })
 })
-
 
 </script>
 
