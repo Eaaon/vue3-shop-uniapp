@@ -1,4 +1,4 @@
-import env from '@/utils/env'
+import config from '@/config/index';
 
 const request = (options: any) => {
   return new Promise((resolve, reject) => {
@@ -9,24 +9,13 @@ const request = (options: any) => {
     options.data = options.data || {}; //请求携带的数据
     let header = { 'Authorization': token }
     uni.request({
-      url: `${env.baseUrl}${options.url}`,
+      url: `${config.baseUrl}${options.url}`,
       header: header,
       method: options.method,
       data: options.data,
       success(res: any) {
         console.log(res.statusCode)
         resolve(res.data)
-        // uni.hideLoading()
-        // if (res.data.code === "000000") {
-        //   resolve(res.data);
-        // } else {
-        //   //其他异常
-        //   // uni.showToast({
-        //   //   title: res.data.msg,
-        //   //   icon: 'none'
-        //   // })
-        //   reject(res.data);
-        // }
       },
       fail(err) {
         uni.hideLoading()

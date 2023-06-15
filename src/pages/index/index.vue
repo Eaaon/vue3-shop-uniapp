@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { compile, ref, reactive, toRefs } from 'vue'
 // import indexBackgroundImage from "@/static/bg.png"
-import { login } from "@/api/user"
+import user from "@/api/user"
 
 
 const state = reactive({
@@ -59,7 +59,13 @@ const param = {
   password: "10",
 }
 
-login(param).then((res: any) => {
+user.login(param).then((res: any) => {
+  uni.showToast({
+    title:'登录成功'
+  })
+})
+
+user.register(param).then((res: any) => {
   uni.showToast({
     title:'登录成功'
   })
