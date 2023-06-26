@@ -1,4 +1,13 @@
-import request from "@/utils/request"
+import request from "@/request"
+
+//商品列表
+function banner(data = {}){
+  return request({
+    url: '/goods/banner',
+    method: 'GET',
+    data: data
+  })
+}
 
 //商品列表
 function list(data = {}){
@@ -21,7 +30,7 @@ function detail(data = {}){
 //商品评价列表
 function comment(data = {}){
   return request({
-    url: '/goods/detail',
+    url: '/goods/comment',
     method: 'GET',
     data: data
   })
@@ -45,6 +54,7 @@ function activityList(data = {}){
 }
 
 const goods = {
+  banner,
   list,
   detail,
   comment,

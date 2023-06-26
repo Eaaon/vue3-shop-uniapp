@@ -14,7 +14,6 @@ const request = (options: any) => {
       method: options.method,
       data: options.data,
       success(res: any) {
-        console.log(res.statusCode)
         resolve(res.data)
       },
       fail(err) {

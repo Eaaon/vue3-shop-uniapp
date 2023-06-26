@@ -2,7 +2,7 @@
   <view v-if="list && list.length">
     <swiper class="swiper" :indicator-dots="false" :autoplay="true" :interval="2000" :duration="2000" :circular="true"
       :vertical="true"  easing-function="linear">
-      <swiper-item v-for="item in list" class="swiper-item">
+      <swiper-item class="swiper-item" v-for="item in list">
         <!-- <navigator :url="'/pages/test/test?id=' + item?.productID"> -->
           <view class="seckill-item">
             <image mode="widthFix" class="seckill-image" :src="item?.url"></image>
@@ -15,10 +15,18 @@
 </template>
 
 <script setup lang="ts">
+import type { PropType } from 'vue';
+
+type Goods = {
+  productID: string;
+  url: string;
+  price: string;
+  originPrice: string;
+};
 
 const props = defineProps({
   list: {
-    type: Array,
+    type:  Array as unknown as PropType<[Goods]>,
     default: []
   },
 });

@@ -1,6 +1,6 @@
 <template>
   <view class="flex flex-col justify-center bg-gray-eee">
-    <view class="bg-cover bg-no-repeat sticky z-10 top-0"
+    <view class="bg-cover bg-no-repeat sticky z-10 top-0" @tap="open()"
       :style="{ backgroundImage: `url('https://www.bing.com/th?id=OHR.BalloonsTurkey_ZH-CN2791109350_1920x1080.webp&qlt=50')` }">
       <view :style="{ height: state.statusBarHeight + 'px' }"></view>
       <view class="flex items-center text-white ml-3"
@@ -12,7 +12,7 @@
       </view>
       <uni-search-bar type="text" placeholder="请输入文本" v-model="state.searchValue"></uni-search-bar>
     </view>
-    <s-swiper></s-swiper>
+    <s-swiper :list="state.bannerList"></s-swiper>
     <s-box></s-box>
     <s-seckill></s-seckill>
     <s-noticebar></s-noticebar>
@@ -26,13 +26,14 @@
 import { compile, ref, reactive, toRefs } from 'vue'
 // import indexBackgroundImage from "@/static/bg.png"
 import user from "@/api/user"
-
+import goods from "@/api/goods"
 
 const state = reactive({
   statusBarHeight: 0,
   navBarHeight: 0,
   navbarLeftWidth: 0,
   searchValue: "",
+  bannerList: []
 })
 
 // 获取手机系统信息
@@ -59,17 +60,29 @@ const param = {
   password: "10",
 }
 
+goods.banner({}).then((res: any) => {
+  state.bannerList = res.data.list
+  console.log('bannerList', state.bannerList)
+})
+
 user.login(param).then((res: any) => {
   uni.showToast({
-    title:'登录成功'
+    title: '登录成功'
   })
 })
 
 user.register(param).then((res: any) => {
   uni.showToast({
-    title:'登录成功'
+    title: '登录成功'
   })
 })
+
+const open = () => {
+  uni.navigateTo({
+    url: '/pages/goods/index'
+  });
+}
+
 
 </script>
 

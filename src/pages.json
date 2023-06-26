@@ -4,6 +4,7 @@
 		"custom": {
 			// uni-ui 规则如下配置
 			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+			"^su-(.*)": "@/pages/ui/su-$1.vue",
 			"^s-(.*)": "@/pages/components/s-$1.vue"
 		}
 	},
@@ -58,13 +59,25 @@
 			"title": "个人中心",
 			"group": "商城"
 		  }
+		},
+		{
+		  "path": "pages/goods/index",
+		  "style": {
+			"navigationBarTitleText": "商品详情"
+		  },
+		  "meta": {
+			"sync": true,
+			"title": "商品详情",
+			"group": "商城"
+		  }
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#2979ff"
+		"backgroundColor": "#2979ff",
+		"navigationStyle": "custom"
 	},
 	"tabBar": {
 		"list": [

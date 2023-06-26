@@ -1,4 +1,4 @@
-import request from "@/utils/request"
+import request from "@/request"
 
 //用户注册
 function register(data = {}){

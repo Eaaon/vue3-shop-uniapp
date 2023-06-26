@@ -1,4 +1,4 @@
-import request from "@/utils/request"
+import request from "@/request"
 
 //分类列表
 function list(data = {}){
