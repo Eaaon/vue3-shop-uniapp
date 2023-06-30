@@ -11,8 +11,8 @@ onHide(() => {
   // console.log("App Hide");
 });
 </script>
-<style>
-@import url('./styles/index.scss');
+<style lang="scss">
+@import './styles/index.scss';
 
 page {
 	background-color: #f7f7f7;

@@ -1,44 +1,32 @@
 <template>
-  <view class="content">
-    <s-tabbar :selected="1"></s-tabbar>
-    <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
+  <view>
+    <view>
+      <button class="ss-reset-button cart-btn" @tap="onAdd">+1</button>
+      <button class="ss-reset-button cart-btn" @tap="onDecrement">-1</button>
     </view>
+    <view>{{ couter }}</view>
+    <s-tabbar :selected="1"></s-tabbar>
+
   </view>
 </template>
 
 <script setup lang="ts">
-import { compile, ref } from 'vue'
+import { compile, ref, computed } from 'vue'
+import { categoryStore } from '@/store/category'
 
+const counterStore = categoryStore()
 
-const title = ref('Hello')
+const couter = computed(() => counterStore.couter);
+
+//去开团
+function onAdd() {
+  counterStore.increment()
+}
+
+function onDecrement(){
+  counterStore.decrement()
+}
+
 </script>
 
-<style>
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
-}
-</style>
+<style></style>

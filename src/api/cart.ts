@@ -35,11 +35,11 @@ function update(data = {}){
   })
 }
 
-const cart = {
+const cartApi = {
   list,
   append,
   remove,
   update,
 }
 
-export default cart
+export default cartApi

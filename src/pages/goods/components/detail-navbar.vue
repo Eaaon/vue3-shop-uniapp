@@ -17,10 +17,10 @@
         </view>
       </view>
       <!-- 中 -->
-      <view class="detail-tab-card ss-flex-1" :style="[{ opacity: state.tabOpacityVal }]">
+      <view class="detail-tab-card flex-1" :style="[{ opacity: state.tabOpacityVal }]">
         <view class="tab-box ss-flex ss-col-center ss-row-around">
           <view
-            class="tab-item ss-flex-1 ss-flex ss-row-center ss-col-center"
+            class="tab-item flex-1 ss-flex ss-row-center ss-col-center"
             v-for="item in state.tabList"
             :key="item.value"
             @tap="onTab(item)"

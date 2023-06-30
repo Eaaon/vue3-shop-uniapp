@@ -19,7 +19,7 @@
       "@/*": ["./src/*"]
     },
     "lib": ["esnext", "dom"],
-    "types": ["@dcloudio/types","node"]
+    "types": ["@dcloudio/types","node","pinia-plugin-persist-uni"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/config/index.ts"]
 }
