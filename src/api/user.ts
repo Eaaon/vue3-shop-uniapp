@@ -108,7 +108,7 @@ function changeUsername(data = {}){
  })
 }
 
-const user = {
+const userApi = {
   register,
   login,
   logout,
@@ -121,4 +121,4 @@ const user = {
   changePassword
 }
 
-export default user
+export default userApi

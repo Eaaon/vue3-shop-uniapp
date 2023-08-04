@@ -1,0 +1,97 @@
+@import './styles/_text.scss';
+@import './styles/_flex.scss';
+@import './styles/_position.scss';
+@import './styles/_margin.scss';
+@import './styles/_padding.scss';
+@import './styles/_animate.scss';
+@import './styles/_border.scss';
+@import './styles/_bg.scss';
+
+body {
+  font-size: 32rpx;
+}
+
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-y {
+  overflow-y: auto;
+}
+
+.line-height-1 {
+  line-height: 1;
+}
+
+.line-height-sm {
+  line-height: 36rpx;
+}
+
+.box-border {
+  box-sizing: border-box;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-300 {
+  height: 300rpx;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.opacity-60 {
+  opacity: 0.6;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.thumb-40 {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.thumb-50 {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.thumb-150 {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.thumb-340 {
+  width: 340rpx;
+  height: 340rpx;
+}
+
+image {
+  display: block;
+}

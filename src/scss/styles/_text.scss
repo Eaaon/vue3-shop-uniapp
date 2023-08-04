@@ -1,0 +1,110 @@
+@import '../../scss/_var.scss';
+
+.text-xxs {
+  font-size: 20rpx !important;
+}
+
+.text-xs {
+  font-size: 24rpx !important;
+}
+
+.text-sm {
+  font-size: 28rpx !important;
+}
+
+.text-base {
+  font-size: 32rpx !important;
+}
+
+.text-lg {
+  font-size: 36rpx !important;
+}
+
+.text-gray-333 {
+  color: $dark-3;
+}
+
+.text-gray-666 {
+  color: $dark-6;
+}
+
+.text-gray-999 {
+  color: $dark-9;
+}
+
+.text-gray-bbb {
+  color: $gray-b;
+}
+
+.text-red-ligth {
+  color: $light-red;
+}
+
+.text-red-dark {
+  color: $red;
+}
+
+.text-white {
+  color: $white;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.world-break {
+  word-break: break-all;
+}
+
+.tracking-wide {
+  letter-spacing: 2rpx;
+}
+
+.line-through {
+  text-decoration-line: line-through;
+}
+
+.decoration-slate-500 {
+  text-decoration-color: $dark-6;
+}

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import cartApi from "@/api/cart"
 
-interface IUserState {
+interface CartState {
   list: any[],
   selectedIds: any[],
   isAllSelected: boolean,
@@ -10,7 +10,7 @@ interface IUserState {
 
 const cart = defineStore({
   id: 'cart',
-  state: ():IUserState => ({
+  state: (): CartState => ({
     list: [], // 购物车列表
     selectedIds: [], // 已选列表
     isAllSelected: false, //是否全选
@@ -37,7 +37,7 @@ const cart = defineStore({
       // }
     },
     // 添加购物车
-    async add(goodsInfo:any) {
+    async add(goodsInfo: any) {
       // const { error } = await cartApi.append({
       //   goods_id: goodsInfo.goods_id,
       //   goods_num: goodsInfo.goods_num,
@@ -49,7 +49,7 @@ const cart = defineStore({
     },
 
     // 更新购物车
-    async update(goodsInfo:any) {
+    async update(goodsInfo: any) {
       // const { error } = await cartApi.update({
       //   goods_id: goodsInfo.goods_id,
       //   goods_num: goodsInfo.goods_num,
@@ -61,7 +61,7 @@ const cart = defineStore({
     },
 
     // 移除购物车
-    async delete(ids:any) {
+    async delete(ids: any) {
       // if (typeof ids === 'array') {
       //   ids = ids.join(',');
       // }
@@ -73,7 +73,7 @@ const cart = defineStore({
     },
 
     // 选择购物车商品
-    selectSingle(goodsId:any) {
+    selectSingle(goodsId: any) {
       if (!this.selectedIds.includes(goodsId)) {
         this.selectedIds.push(goodsId);
       } else {
@@ -83,12 +83,12 @@ const cart = defineStore({
     },
 
     // 全选
-    selectAll(flag:any) {
+    selectAll(flag: any) {
       this.isAllSelected = flag;
       if (!flag) {
         this.selectedIds = [];
       } else {
-        this.list.forEach((item:any) => {
+        this.list.forEach((item: any) => {
           this.selectedIds.push(item.id);
         });
       }
@@ -104,11 +104,6 @@ const cart = defineStore({
   },
   persist: {
     enabled: true,
-    strategies: [
-      {
-        key: 'cart-store',
-      },
-    ],
   },
 });
 

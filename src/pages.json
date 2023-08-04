@@ -4,8 +4,8 @@
 		"custom": {
 			// uni-ui 规则如下配置
 			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
-			"^su-(.*)": "@/pages/ui/su-$1.vue",
-			"^s-(.*)": "@/pages/components/s-$1.vue"
+			"^su-(.*)": "@/pages/ui/su-$1/su-$1.vue",
+			"^s-(.*)": "@/pages/components/s-$1/s-$1.vue"
 		}
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
@@ -51,7 +51,8 @@
 		{
 		  "path": "pages/index/user",
 		  "style": {
-			"navigationBarTitleText": "个人中心"
+			"navigationBarTitleText": "个人中心",
+			"navigationStyle": "custom"
 		  },
 		  "meta": {
 			"sync": true,

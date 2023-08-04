@@ -53,7 +53,7 @@ function activityList(data = {}){
   })
 }
 
-const goods = {
+const goodsApi = {
   banner,
   list,
   detail,
@@ -62,4 +62,4 @@ const goods = {
   activityList
 }
 
-export default goods
+export default goodsApi

@@ -1,13 +1,14 @@
 import config from '@/config/index';
+import { getToken } from '@/utils/auth';
 
 const request = (options: any) => {
   return new Promise((resolve, reject) => {
-    // const token = uni.getStorageSync('token')
-    const token = ''
-    options.url = options.url || ''; // 请求路径
-    options.method = options.method || 'GET'; //请求方式
-    options.data = options.data || {}; //请求携带的数据
-    let header = { 'Authorization': token }
+    let header = {
+      Accept: 'text/json',
+      'Content-Type': 'application/json;charset=UTF-8',
+      platform: 'WechatMiniProgram',
+      'Authorization': `${getToken()}`
+    }
     uni.request({
       url: `${config.baseUrl}${options.url}`,
       header: header,
@@ -17,46 +18,41 @@ const request = (options: any) => {
         resolve(res.data)
       },
       fail(err) {
-        uni.hideLoading()
-        //请求失败
         uni.showToast({
           title: '无法连接到服务器',
           icon: 'none'
         })
         reject(err)
-      }
+      },
     })
   })
 }
 
 uni.addInterceptor('request', {
   invoke(args) {
-    // uni.showLoading({
-    //   title: '加载中...'
-    // })
-    // request 触发前拼接 url 
-    // args.url = 'https://dev.smileteeth.cn/vendingmall/' + args.url
-    // const token = uni.getStorageSync('token')
-    // args.header = {
-    //   'Authorization': token
-    // }
-    // console.log(args.header)
+    uni.showLoading({
+      title: '加载中...'
+    })
   },
   success(args) {
-    // 请求成功后，修改code值为1
-    // args.data.code = 1
-    // uni.hideLoading()
-    console.log("success", args)
+    const code = args.statusCode
+    if (code == 200) {
+      console.log("请求成功")
+    } else if (code == 401) {
+      console.log("未授权，跳转回登录页")
+    } else {
+      uni.showToast({
+        icon: "none",
+        duration: 4000,
+        title: args.msg
+      });
+    }
   },
   fail(err) {
-    // console.log('interceptor-fail', err)
-    // console.log('请求失败')
     console.log("fail", err)
-    uni.hideLoading()
   },
   complete(res) {
-    // uni.hideLoading()
-    // console.log('interceptor-complete', res)
+    uni.hideLoading()
   }
 })
 

@@ -15,7 +15,7 @@ const shop = {
 };
 
 // 加载Shopro底层依赖
-export async function ShoproInit() {
+export async function ShopInit() {
   // 应用初始化
   // await $store('app').init();
 
@@ -23,12 +23,12 @@ export async function ShoproInit() {
   $platform.load();
 
   if (process.env.NODE_ENV === 'development') {
-    ShoproDebug();
+    ShopDebug();
   }
 }
 
 // 开发模式
-function ShoproDebug() {
+function ShopDebug() {
   // 开发环境引入vconsole调试
   // #ifdef H5
   // import("vconsole").then(vconsole => {

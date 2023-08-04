@@ -3,8 +3,9 @@ let baseUrl;
 let version;
 let uploadUrl;
 if (process.env.NODE_ENV === 'development') {
-  baseUrl = 'https://easydoc.net/mock/hJxtUayA';
-  uploadUrl = 'https://api.shopro.sheepjs.com'
+  // baseUrl = 'https://easydoc.net/mock/hJxtUayA';
+  baseUrl = 'https://api.shopro.sheepjs.com'
+  uploadUrl = 'https://file.sheepjs.com'
 } else {
   baseUrl = import.meta.env.BASE_URL;
 }

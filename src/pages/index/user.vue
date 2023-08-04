@@ -1,42 +1,21 @@
 <template>
-  <view class="content">
+  <view class="bg-contain">
+    <s-user-card></s-user-card>
+    <s-order-card></s-order-card>
+    <s-menu-grid></s-menu-grid>
     <s-tabbar :selected="3"></s-tabbar>
-    <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
-    </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const title = ref('Hello')
+
 </script>
 
 <style>
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
+.bg-contain {
+  background: #F6F6F6 url(https://img12.360buyimg.com/img/s750x432_jfs/t1/89090/7/25779/91182/624d07d0E1c8253ed/b876327d65211ca4.png) no-repeat top center / 100% auto;
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
 }
 </style>

@@ -12,7 +12,7 @@ onHide(() => {
 });
 </script>
 <style lang="scss">
-@import './styles/index.scss';
+@import './scss/index.scss';
 
 page {
 	background-color: #f7f7f7;

@@ -45,11 +45,11 @@ function remove(data = {}){
   })
 }
 
-const order = {
+const orderApi = {
   list,
   detail,
   cancel,
   remove
 }
 
-export default order
+export default orderApi

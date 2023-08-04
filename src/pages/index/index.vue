@@ -1,6 +1,6 @@
 <template>
   <view class="flex flex-col justify-center bg-gray-eee">
-    <view class="bg-cover bg-no-repeat sticky z-10 top-0" @tap="open()"
+    <!-- <view class="bg-cover bg-no-repeat sticky z-10 top-0" @tap="open()"
       :style="{ backgroundImage: `url('https://www.bing.com/th?id=OHR.BalloonsTurkey_ZH-CN2791109350_1920x1080.webp&qlt=50')` }">
       <view :style="{ height: state.statusBarHeight + 'px' }"></view>
       <view class="flex items-center text-white ml-3"
@@ -11,22 +11,36 @@
         <view class="flex-1 pl-sm text-ellipsis">广东省深圳市福田区群星广场A座1801</view>
       </view>
       <uni-search-bar type="text" placeholder="请输入文本" v-model="state.searchValue"></uni-search-bar>
-    </view>
-    <s-swiper :list="state.bannerList"></s-swiper>
-    <s-box></s-box>
-    <s-seckill></s-seckill>
-    <s-noticebar></s-noticebar>
-    <s-waterfull></s-waterfull>
+    </view> -->
+    <!-- <s-swiper :list="state.bannerList"></s-swiper> -->
+    <!-- <s-box></s-box> -->
+    <!-- <s-seckill></s-seckill> -->
+    <!-- <s-noticebar></s-noticebar> -->
+    <!-- <s-waterfull></s-waterfull> -->
 
-    <s-tabbar :selected="0"></s-tabbar>
+    <s-layout
+      title="首页"
+      navbar="custom"
+      :selected="0"
+      onShareAppMessage
+    >
+      <!-- <s-block v-for="(item, index) in template.data" :key="index" :styles="item.style">
+        <s-block-item :type="item.type" :data="item.data" :styles="item.style" />
+      </s-block> -->
+      <!-- 广告模块 -->
+      <!-- <s-popup-image /> -->
+    </s-layout>
+
+    <!-- <s-tabbar :selected="0"></s-tabbar> -->
   </view>
 </template>
 
 <script setup lang="ts">
 import { compile, ref, reactive, toRefs } from 'vue'
 // import indexBackgroundImage from "@/static/bg.png"
-import user from "@/api/user"
-import goods from "@/api/goods"
+import userApi from "@/api/user"
+import goodsApi from "@/api/goods"
+import appApi from '@/api/app'
 
 const state = reactive({
   statusBarHeight: 0,
@@ -60,22 +74,27 @@ const param = {
   password: "10",
 }
 
-goods.banner({}).then((res: any) => {
-  state.bannerList = res.data.list
-  console.log('bannerList', state.bannerList)
+appApi.init('222').then((res: any) => {
+  // state.bannerList = res.data.list
+  console.log('res', res)
 })
 
-user.login(param).then((res: any) => {
-  uni.showToast({
-    title: '登录成功'
-  })
-})
+// goodsApi.banner({}).then((res: any) => {
+//   state.bannerList = res.data.list
+//   console.log('bannerList', state.bannerList)
+// })
 
-user.register(param).then((res: any) => {
-  uni.showToast({
-    title: '登录成功'
-  })
-})
+// userApi.login(param).then((res: any) => {
+//   uni.showToast({
+//     title: '登录成功'
+//   })
+// })
+
+// userApi.register(param).then((res: any) => {
+//   uni.showToast({
+//     title: '登录成功'
+//   })
+// })
 
 const open = () => {
   uni.navigateTo({

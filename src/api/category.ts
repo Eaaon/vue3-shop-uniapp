@@ -9,8 +9,8 @@ function list(data = {}){
   })
 }
 
-const category = {
+const categoryApi = {
   list
 }
 
-export default category
+export default categoryApi

@@ -13,7 +13,7 @@ import { isEmpty } from 'lodash';
 // #ifdef H5
 import { isWxBrowser } from '@/utils/helper/utils';
 // #endif
-// import wechat from './provider/wechat/index.js';
+import wechat from './provider/wechat/index.js';
 // import apple from './provider/apple';
 // import Pay from './pay';
 
@@ -60,11 +60,11 @@ if (isEmpty(name)) {
 }
 
 // 加载当前平台前置行为
-// const load = () => {
-//   if (provider === 'wechat') {
-//     wechat.load();
-//   }
-// };
+const load = () => {
+  if (provider === 'wechat') {
+    wechat.load();
+  }
+};
 
 // 使用厂商独占sdk name = 'wechat' | 'alipay' | 'apple'
 const useProvider = (_provider = '') => {

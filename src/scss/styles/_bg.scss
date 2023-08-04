@@ -1,0 +1,103 @@
+@import '../../scss/_var.scss';
+
+
+.bg-gray {
+  background-color: $dark-9;
+}
+
+.bg-blue-dark {
+  background-color: $blue;
+}
+
+.bg-blue-ligth {
+  background-color: $light-blue;
+}
+
+.bg-white {
+  background-color: $white;
+}
+
+.bg-gray-eee {
+  background-color: $gray-e;
+}
+
+.bg-red-ligth {
+  background-color: $red;
+}
+
+.bg-mask-40 {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-contain {
+  background-size: contain;
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+
+//渐变色
+.bg-yellow-gradient {
+  background-image: linear-gradient(45deg, #f5fe00, #ff6600) !important;
+  color: $dark-3 !important;
+}
+
+.bg-orange-gradient {
+  background-image: linear-gradient(90deg, #ff6000, #fe832a) !important;
+  color: $white !important;
+}
+
+.bg-red-gradient {
+  background-image: linear-gradient(45deg, #f33a41, #ed0586) !important;
+  color: $white !important;
+}
+
+.bg-pink-gradient {
+  background-image: linear-gradient(45deg, #fea894, #ff1047) !important;
+  color: $white !important;
+}
+
+.bg-mauve-gradient {
+  background-image: linear-gradient(45deg, #c01f95, #7115cc) !important;
+  color: $white !important;
+}
+
+.bg-purple-gradient {
+  background-image: linear-gradient(45deg, #9829ea, #5908fb) !important;
+  color: $white !important;
+}
+
+.bg-blue-gradient {
+  background-image: linear-gradient(45deg, #00b8f9, #0166eb) !important;
+  color: $white !important;
+}
+
+.bg-cyan-gradient {
+  background-image: linear-gradient(45deg, #06edfe, #48b2fe) !important;
+  color: $white !important;
+}
+
+.bg-green-gradient {
+  background-image: linear-gradient(45deg, #3ab54a, #8cc63f) !important;
+  color: $white !important;
+}
+
+.bg-olive-gradient {
+  background-image: linear-gradient(45deg, #90e630, #39d266) !important;
+  color: $white !important;
+}
+
+.bg-grey-gradient {
+  background-image: linear-gradient(45deg, #9aadb9, #354855) !important;
+  color: $white !important;
+}
+
+.bg-brown-gradient {
+  background-image: linear-gradient(45deg, #ca6f2e, #cb1413) !important;
+  color: $white !important;
+}
